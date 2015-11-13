@@ -1,21 +1,27 @@
 {
-    "name": "marcinmisiak/yii2-dbsession",
-    "description": "Use session to get login users list. We have model: user_id = user->getId()",
-    "type": "yii2-extension",
-    "keywords": ["yii2","extension"," session"," user_id"],
-    "license": "GPL-3.0+",
-    "authors": [
-        {
-            "name": "Marcin Misiak",
-            "email": "marcin@wseip.edu.pl"
-        }
-    ],
-    "require": {
-        "yiisoft/yii2": "*"
-    },
-    "autoload": {
-        "psr-4": {
-            "marcinmisiak\\dbsession\\": ""
-        }
-    }
+	"name" : "marcinmisiak/yii2DBsession",
+	"description" : "Use session to get login users list. We have model: user_id = user->getId(), last_ip - last IP login, last_activity - last time of login",
+	"type" : "yii2-extension",
+	"keywords" : [
+		"yii2",
+		"extension",
+		" session",
+		" user_id",
+		" lats ip",
+		" last activity"
+	],
+	"license" : "GPL-3.0+",
+	"authors" : [{
+			"name" : "Marcin Misiak",
+			"email" : "2mmarcinmisiak@gmail.com"
+		}
+	],
+	"require" : {
+		"yiisoft/yii2" : "*"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"marcinmisiak\\dbsession\\" : ""
+		}
+	}
 }
