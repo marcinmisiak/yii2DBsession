@@ -1,5 +1,5 @@
 {
-	"name" : "marcinmisiak/yii2DBsession",
+	"name" : "marcinmisiak/yii2-dbsession",
 	"description" : "Use session to get login users list. We have model: user_id = user->getId(), last_ip - last IP login, last_activity - last time of login",
 	"type" : "yii2-extension",
 	"keywords" : [
