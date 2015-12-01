@@ -33,7 +33,9 @@ CREATE TABLE IF NOT EXISTS `mdl_istudent_session` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
 Example table name: mdl_istudent_session
+
 
 Fields:
 id - sesssion id
