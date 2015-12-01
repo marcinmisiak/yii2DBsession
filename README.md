@@ -71,7 +71,34 @@ Where:
 Usage
 -----
 
-Once the extension is installed, simply use it in your code by  :
+Example lat 5 min. login list:
 
-```php
-<?= \marcinmisiak\dbsession\AutoloadExample::widget(); ?>```
+<?php
+$query = MdlIstudentSession::find()
+->andWhere(['>=', 'mdl_istudent_session.expire', time() + 60*5 ]);
+
+$dpOstatnioZalogowani = new ActiveDataProvider([
+		'query' => $query,
+		'pagination' => [
+				'pageSize' => 10,
+		],
+		'sort' => [
+				'defaultOrder' => [
+						'expire' => SORT_DESC,
+		
+				]
+				]
+		]
+		);
+		
+echo yii\grid\GridView::widget([
+    		'dataProvider' => $dpOstatnioZalogowani,
+   		'layout'=>"{items}\n{pager}",
+   		'columns'=> [ [ 'header'=>'',
+   				'format'=>'raw',
+   				'value' => function ($data) {
+   		return Icon::show('user'). " ". $data->konto->imie ." " . $data->konto->nazwisko;
+   	}
+   		]]
+      		]);
+
