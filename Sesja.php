@@ -12,8 +12,6 @@ class Sesja extends \yii\web\DbSession {
 	
 	public function writeSession($id, $data)
 	{
-		// exception must be caught in session write handler
-		// http://us.php.net/manual/en/function.session-set-save-handler.php
 		try {
 			$query = new Query;
 			$exists = $query->select(['id'])
@@ -23,13 +21,12 @@ class Sesja extends \yii\web\DbSession {
 			->queryScalar();
 			$fields = $this->composeFields($id, $data);
 			
-			// add our fields
-		
+			
 			if(!Yii::$app->user->getIsGuest()) {
 				$fields['user_id'] = Yii::$app->user->getId();
 			}
 			
-			//var_dump($fields);exit;
+			
 			if ($exists === false) {
 				$this->db->createCommand()
 				->insert($this->sessionTable, $fields)
@@ -42,7 +39,7 @@ class Sesja extends \yii\web\DbSession {
 			}
 		} catch (\Exception $e) {
 			$exception = ErrorHandler::convertExceptionToString($e);
-			// its too late to use Yii logging here
+			
 			error_log($exception);
 			echo $exception;
 	
