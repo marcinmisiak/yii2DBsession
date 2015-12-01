@@ -5,10 +5,10 @@
 	"keywords" : [
 		"yii2",
 		"extension",
-		" session",
-		" user_id",
-		" lats ip",
-		" last activity"
+		"session",
+		"user_id",
+		"lats ip",
+		"last activity"
 	],
 	"license" : "GPL-3.0+",
 	"authors" : [{
