@@ -21,11 +21,10 @@ class Sesja extends \yii\web\DbSession {
 			->queryScalar();
 			$fields = $this->composeFields($id, $data);
 			
-			
+		
 			if(!Yii::$app->user->getIsGuest()) {
 				$fields['user_id'] = Yii::$app->user->getId();
 			}
-			
 			
 			if ($exists === false) {
 				$this->db->createCommand()
@@ -39,7 +38,6 @@ class Sesja extends \yii\web\DbSession {
 			}
 		} catch (\Exception $e) {
 			$exception = ErrorHandler::convertExceptionToString($e);
-			
 			error_log($exception);
 			echo $exception;
 	
@@ -47,5 +45,30 @@ class Sesja extends \yii\web\DbSession {
 		}
 	
 		return true;
+	}
+	
+	protected function composeFields($id, $data)
+	{
+		$fields = [
+				'data' => $data,
+		];
+		if (isset($this->writeCallback)) {
+			$fields = array_merge(
+					$fields,
+					call_user_func($this->writeCallback, $this)
+			);
+			if (!is_string($fields['data'])) {
+				$_SESSION = $fields['data'];
+				$fields['data'] = session_encode();
+			}
+		}
+		
+		$fields = array_merge($fields, [
+				'id' => $id,
+				'expire' => time() + $this->getTimeout(),
+				'last_activity' => date('Y-m-d H:i:s'),
+				'last_ip' => \Yii::$app->request->getUserIP(),
+		]);
+		return $fields;
 	}
 }
