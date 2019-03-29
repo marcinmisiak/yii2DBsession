@@ -2,10 +2,7 @@
 namespace marcinmisiak\dbsession;
 
 use Yii;
-use yii\db\Connection;
 use yii\db\Query;
-use yii\base\InvalidConfigException;
-use yii\di\Instance;
 use yii\base\ErrorHandler;
 
 class Sesja extends \yii\web\DbSession {
@@ -47,7 +44,7 @@ class Sesja extends \yii\web\DbSession {
 		return true;
 	}
 	
-	protected function composeFields($id, $data)
+	protected function composeFields($id = NULL, $data = NULL)
 	{
 		$fields = [
 				'data' => $data,
