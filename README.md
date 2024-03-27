@@ -22,7 +22,7 @@ or add
 to the require section of your `composer.json` file.
 
 After install create session table in your DB, MySQL eg:
-
+```SQL
 CREATE TABLE IF NOT EXISTS `mdl_istudent_session` (
   `id` char(40) COLLATE utf8_unicode_ci NOT NULL,
   `expire` int(11) DEFAULT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `mdl_istudent_session` (
   `last_ip` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
+```
 
 Example table name: mdl_istudent_session
 
